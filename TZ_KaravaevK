@@ -1,0 +1,1477 @@
+{
+ "cells": [
+  {
+   "cell_type": "markdown",
+   "id": "973927c6-6a09-49fc-8ba5-84903a3be1f6",
+   "metadata": {
+    "tags": []
+   },
+   "source": [
+    "# Тестовое задание на позицию Junior Analyst. (Караваев К. Р.)\n",
+    "## 1. Вопросы: \n",
+    "1) Как хорошо Вы владеете Python? Оцените свой уровень по шкале от 0 до 10, \n",
+    "где 0 - совсем не знаю, 10 - владею в совершенстве. Объясните, почему Вы выбрали такой балл.\n",
+    "**Ответ: 6. Уровень вледения базовый, поскольку использую Python как вспомогательный инструмент для задач анализа данных, математических расчетов. Не углублялся в задачи разработки и сложные конструкции языка.**\n",
+    "\n",
+    "2) Насколько хорошо Вы знакомы с Google Sheets? шкале от 0 до 10, где 0 - совсем не знаю, 10 - владею в совершенстве.\n",
+    "Объясните, почему Вы выбрали такой балл.\n",
+    "**Ответ: 5. Не так часто работал с Google Sheets.**"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "b195cc82-089e-40cb-b1ce-e562f07169c1",
+   "metadata": {
+    "tags": []
+   },
+   "source": [
+    "---\n",
+    "## 2. Задачи на логику:\n",
+    "1) Рекламная кампания стартовала вчера с дневным бюджетом 40 $. Половина\n",
+    "бюджета была израсходована к полудню, а 80% оставшегося бюджета было\n",
+    "потрачено между полуднем и временем закрытия. Сколько долларов не было\n",
+    "потрачено?"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 1,
+   "id": "858c99c5-27bc-4a1c-8c84-361986d04481",
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "Не было потрачено: 4.0$\n"
+     ]
+    }
+   ],
+   "source": [
+    "X = 40\n",
+    "print(f'Не было потрачено: { X - (X*0.5 + X*0.5*0.8)}$')"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "2ad0cedf-b28f-499b-a9c6-3a14aba73dc4",
+   "metadata": {},
+   "source": [
+    "---\n",
+    "2) 5 идентичных рекламных кампаний работали 24 дня по 6 часов в день,\n",
+    "потрачено было 120 долларов. Сколько дней они работали бы на 216 долларов,\n",
+    "если бы 9 одинаковых кампаний работали бы по 8 часов в день?"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 2,
+   "id": "6cfb18ba-3c56-445e-b7dd-38849938c270",
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "Компании проработали бы 18.0 дней.\n"
+     ]
+    }
+   ],
+   "source": [
+    "hour = ((120 / 5 ) / 24) / 6 # Один час\n",
+    "\n",
+    "print(f'Компании проработали бы {216 / (hour*8*9)} дней.')"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "93f3a00b-e94f-47d8-8469-63dbddbfad06",
+   "metadata": {},
+   "source": [
+    "---\n",
+    "3) Дизайнеры создали 200 рекламных баннеров для двух рекламных кампаний. 80\n",
+    "из них не использовались ни в кампании No1, ни в кампании No2, 60\n",
+    "использовались только в кампании No1. И для каждого рекламного баннера,\n",
+    "который использовался в обеих кампаниях, приходится 3 баннера, которые\n",
+    "использовались только в кампании No2. Сколько баннеров было использовано в\n",
+    "обеих рекламных кампаниях?\n"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "ddd12567-95f0-4fd9-aa52-7ad41908654c",
+   "metadata": {},
+   "source": [
+    "Положим, что \n",
+    "\n",
+    "$x_1$ - число баннеров, использованных в компании №1 \n",
+    "\n",
+    "$x_2$ - число рекламных баннеров, использованных в компании №2\n",
+    "\n",
+    "$x_3$ - число баннеров, использованных в компании №1 и в компании №2\n",
+    "\n",
+    "Тогда получаем \n",
+    "\\begin{equation}\n",
+    "  \\begin{cases}\n",
+    "    x_1 = 60 \\\\\n",
+    "    x_1 + x_1 + x_3 = 200-80 \\\\\n",
+    "    x_2 = 3x_3\n",
+    "  \\end{cases}\n",
+    "\\end{equation}\n",
+    "\n",
+    "Решая систему, получаем:\n",
+    "$x_1 = 60, x_2 = 45, x_3 = 15$"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "73a11713-e683-4463-8116-ef1644de7bb0",
+   "metadata": {},
+   "source": [
+    "---\n",
+    "4) Энн использует Instagram, но не Facebook, а Джон использует Youtube и\n",
+    "Facebook. Кейт использует Youtube, но не Instagram, а Том использует Facebook,\n",
+    "но не Youtube. Если каждый человек использует две из трех социальных сетей,\n",
+    "у кого предпочтения совпадают?\n",
+    "\n",
+    "**Ответ: У Джона и Кейт предпочтения совпадают, они используют и Youtube и Facebook.**"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "89593a23-772c-4ee3-8246-a6ab3dba5c4e",
+   "metadata": {},
+   "source": [
+    "---\n",
+    "5) Средний итоговый балл стажера по 4 модулям составляет 78 баллов. Сколько\n",
+    "баллов должен получить стажер за 5-й модуль, чтобы средний балл по всему\n",
+    "заданию составил 80?\n",
+    "\n",
+    "По условию: \n",
+    "$ \\hat{\\mu} = \\cfrac{x_1 + x_2 + x_3 + x_4}{4}= 78 $, а \n",
+    "$ \\cfrac{x_1 + x_2 + x_3 + x_4 + x_5}{5} = 80$, таким образом $\\cfrac{ 78 \\cdot 4 + x_5}{5}=80 \\Rightarrow x_5 = 88$.\n",
+    "\n",
+    "**Ответ: Cтажер должен получить 88 баллов за 5-й модуль.**"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "870c99ac-d445-478b-8d44-3dbf47913569",
+   "metadata": {},
+   "source": [
+    "---\n",
+    "6) Заказанные в приложении товары доставляются на автомобиле. Автомобиль\n",
+    "проезжает 260 км со средней скоростью 80 км / ч. На обратном пути машина\n",
+    "движется со средней скоростью 100 км / ч. Насколько быстрее был обратный\n",
+    "путь? Ответ указать в минутах."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 3,
+   "id": "08d19fb9-e6d0-4e95-a42c-257017902f30",
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "Обратный путь оказался быстрее на 39 минут.\n"
+     ]
+    }
+   ],
+   "source": [
+    "def time_to_reach(distance, speed):\n",
+    "    return distance / speed\n",
+    "\n",
+    "distance = 260\n",
+    "\n",
+    "speed_forward = 80\n",
+    "speed_backward = 100\n",
+    "\n",
+    "time_forward = time_to_reach(distance, speed_forward)\n",
+    "time_backward = time_to_reach(distance, speed_backward)\n",
+    "\n",
+    "time_difference_hours = time_forward - time_backward\n",
+    "time_difference_minutes = time_difference_hours * 60\n",
+    "\n",
+    "print(f'Обратный путь оказался быстрее на {abs(round(time_difference_minutes))} минут.')"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "21dff5df-47fb-4044-a43b-676549c4f0ac",
+   "metadata": {
+    "tags": []
+   },
+   "source": [
+    "---\n",
+    "## 3. Техническое задание\n",
+    "В файле `df.xlsx` представлены данные по поступлению денежных средств от\n",
+    "клиентов компании N за покупку ее услуг.\n",
+    "\n",
+    "Имеющиеся поля:\n",
+    "* `client_id` - ID клиента;\n",
+    "* `sum` – сумма денежных средств;\n",
+    "* `status` – статус оплаты;\n",
+    "* `sale` – менеджер, заключивший сделку;\n",
+    "* `new/current` – статус сделки;\n",
+    "* `document` – наличие оригинала подписанного договора с клиентом;\n",
+    "* `receiving_date` – дата получения оригинала договора.\n",
+    "\n",
+    "**Вопросы:**\n",
+    "1) Вычислите общую выручку за июль 2021 по тем сделкам, приход денежных\n",
+    "средств которых не просрочен.\n",
+    "2) Как изменялась выручка компании за рассматриваемый период?\n",
+    "Проиллюстрируйте графиком.\n",
+    "3) Кто из менеджеров привлек для компании больше всего денежных средств в\n",
+    "сентябре 2021?\n",
+    "4) Какой тип сделок (новая/текущая) был преобладающим в октябре 2021?\n",
+    "5) Сколько оригиналов договора по майским сделкам было получено в июне 2021?\n",
+    "\n",
+    "**Задание:**\n",
+    "За каждую заключенную сделку менеджер получает бонус, который рассчитывается\n",
+    "следующим образом.\n",
+    "1) За новые сделки менеджер получает 7 % от суммы, при условии, что статус\n",
+    "оплаты «ОПЛАЧЕНО», а также имеется оригинал подписанного договора с\n",
+    "клиентом (в рассматриваемом месяце).\n",
+    "2) За текущие сделки менеджер получает 5 % от суммы, если она больше 10 тыс.,\n",
+    "и 3 % от суммы, если меньше. При этом статус оплаты может быть любым,\n",
+    "кроме «ПРОСРОЧЕНО», а также необходимо наличие оригинала подписанного\n",
+    "договора с клиентом (в рассматриваемом месяце).\n",
+    "Бонусы по сделкам, оригиналы для которых приходят позже рассматриваемого\n",
+    "месяца, считаются остатком на следующий период, который выплачивается по мере\n",
+    "прихода оригиналов. Вычислите остаток каждого из менеджеров на 01.07.2021."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 4,
+   "id": "9229ba98-a817-453c-b122-62d8c26a9721",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "import pandas as pd\n",
+    "import matplotlib.pyplot as plt\n",
+    "import seaborn as sns \n",
+    "import numpy as np"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 5,
+   "id": "bd0f2dec-64bc-44c7-ae74-2d83a674ef9f",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "df = pd.read_excel('data.xlsx')"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 6,
+   "id": "2dbdab17-aab7-4747-b4fe-375611010bb6",
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/html": [
+       "<div>\n",
+       "<style scoped>\n",
+       "    .dataframe tbody tr th:only-of-type {\n",
+       "        vertical-align: middle;\n",
+       "    }\n",
+       "\n",
+       "    .dataframe tbody tr th {\n",
+       "        vertical-align: top;\n",
+       "    }\n",
+       "\n",
+       "    .dataframe thead th {\n",
+       "        text-align: right;\n",
+       "    }\n",
+       "</style>\n",
+       "<table border=\"1\" class=\"dataframe\">\n",
+       "  <thead>\n",
+       "    <tr style=\"text-align: right;\">\n",
+       "      <th></th>\n",
+       "      <th>client_id</th>\n",
+       "      <th>sum</th>\n",
+       "      <th>status</th>\n",
+       "      <th>sale</th>\n",
+       "      <th>new/current</th>\n",
+       "      <th>Unnamed: 5</th>\n",
+       "      <th>document</th>\n",
+       "      <th>receiving_date</th>\n",
+       "    </tr>\n",
+       "  </thead>\n",
+       "  <tbody>\n",
+       "    <tr>\n",
+       "      <th>0</th>\n",
+       "      <td>NaN</td>\n",
+       "      <td>NaN</td>\n",
+       "      <td>Май 2021</td>\n",
+       "      <td>NaN</td>\n",
+       "      <td>NaN</td>\n",
+       "      <td>NaN</td>\n",
+       "      <td>NaN</td>\n",
+       "      <td>NaN</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <th>1</th>\n",
+       "      <td>6.0</td>\n",
+       "      <td>11693.7</td>\n",
+       "      <td>ВНУТРЕННИЙ</td>\n",
+       "      <td>-</td>\n",
+       "      <td>-</td>\n",
+       "      <td>NaN</td>\n",
+       "      <td>-</td>\n",
+       "      <td>-</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <th>2</th>\n",
+       "      <td>14.0</td>\n",
+       "      <td>5452.7</td>\n",
+       "      <td>ОПЛАЧЕНО</td>\n",
+       "      <td>Петрова</td>\n",
+       "      <td>новая</td>\n",
+       "      <td>NaN</td>\n",
+       "      <td>оригинал</td>\n",
+       "      <td>2021-07-26 00:00:00</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <th>3</th>\n",
+       "      <td>15.0</td>\n",
+       "      <td>13991.7</td>\n",
+       "      <td>ОПЛАЧЕНО</td>\n",
+       "      <td>Иванов</td>\n",
+       "      <td>текущая</td>\n",
+       "      <td>NaN</td>\n",
+       "      <td>оригинал</td>\n",
+       "      <td>2021-06-08 00:00:00</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <th>4</th>\n",
+       "      <td>16.0</td>\n",
+       "      <td>719.7</td>\n",
+       "      <td>ОПЛАЧЕНО</td>\n",
+       "      <td>Иванов</td>\n",
+       "      <td>текущая</td>\n",
+       "      <td>NaN</td>\n",
+       "      <td>оригинал</td>\n",
+       "      <td>2021-06-08 00:00:00</td>\n",
+       "    </tr>\n",
+       "  </tbody>\n",
+       "</table>\n",
+       "</div>"
+      ],
+      "text/plain": [
+       "   client_id      sum      status     sale new/current  Unnamed: 5  document  \\\n",
+       "0        NaN      NaN    Май 2021      NaN         NaN         NaN       NaN   \n",
+       "1        6.0  11693.7  ВНУТРЕННИЙ        -           -         NaN         -   \n",
+       "2       14.0   5452.7    ОПЛАЧЕНО  Петрова       новая         NaN  оригинал   \n",
+       "3       15.0  13991.7    ОПЛАЧЕНО   Иванов     текущая         NaN  оригинал   \n",
+       "4       16.0    719.7    ОПЛАЧЕНО   Иванов     текущая         NaN  оригинал   \n",
+       "\n",
+       "        receiving_date  \n",
+       "0                  NaN  \n",
+       "1                    -  \n",
+       "2  2021-07-26 00:00:00  \n",
+       "3  2021-06-08 00:00:00  \n",
+       "4  2021-06-08 00:00:00  "
+      ]
+     },
+     "execution_count": 6,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "df.head()"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 7,
+   "id": "4ac794fe-043b-418d-8bb5-42f77609ecb4",
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/html": [
+       "<div>\n",
+       "<style scoped>\n",
+       "    .dataframe tbody tr th:only-of-type {\n",
+       "        vertical-align: middle;\n",
+       "    }\n",
+       "\n",
+       "    .dataframe tbody tr th {\n",
+       "        vertical-align: top;\n",
+       "    }\n",
+       "\n",
+       "    .dataframe thead th {\n",
+       "        text-align: right;\n",
+       "    }\n",
+       "</style>\n",
+       "<table border=\"1\" class=\"dataframe\">\n",
+       "  <thead>\n",
+       "    <tr style=\"text-align: right;\">\n",
+       "      <th></th>\n",
+       "      <th>client_id</th>\n",
+       "      <th>sum</th>\n",
+       "      <th>status</th>\n",
+       "      <th>sale</th>\n",
+       "      <th>new/current</th>\n",
+       "      <th>Unnamed: 5</th>\n",
+       "      <th>document</th>\n",
+       "      <th>receiving_date</th>\n",
+       "    </tr>\n",
+       "  </thead>\n",
+       "  <tbody>\n",
+       "    <tr>\n",
+       "      <th>725</th>\n",
+       "      <td>285.0</td>\n",
+       "      <td>4328.7</td>\n",
+       "      <td>ОПЛАЧЕНО</td>\n",
+       "      <td>Васильев</td>\n",
+       "      <td>текущая</td>\n",
+       "      <td>NaN</td>\n",
+       "      <td>оригинал</td>\n",
+       "      <td>2021-11-15 00:00:00</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <th>726</th>\n",
+       "      <td>360.0</td>\n",
+       "      <td>3096.2</td>\n",
+       "      <td>ОПЛАЧЕНО</td>\n",
+       "      <td>Васильев</td>\n",
+       "      <td>новая</td>\n",
+       "      <td>NaN</td>\n",
+       "      <td>НЕТ</td>\n",
+       "      <td>NaN</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <th>727</th>\n",
+       "      <td>360.0</td>\n",
+       "      <td>3096.2</td>\n",
+       "      <td>ПРОСРОЧЕНО</td>\n",
+       "      <td>Васильев</td>\n",
+       "      <td>новая</td>\n",
+       "      <td>NaN</td>\n",
+       "      <td>НЕТ</td>\n",
+       "      <td>NaN</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <th>728</th>\n",
+       "      <td>373.0</td>\n",
+       "      <td>4403.7</td>\n",
+       "      <td>ОПЛАЧЕНО</td>\n",
+       "      <td>Михайлов</td>\n",
+       "      <td>новая</td>\n",
+       "      <td>NaN</td>\n",
+       "      <td>оригинал</td>\n",
+       "      <td>2021-11-08 00:00:00</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <th>729</th>\n",
+       "      <td>286.0</td>\n",
+       "      <td>3978.7</td>\n",
+       "      <td>ОПЛАЧЕНО</td>\n",
+       "      <td>Филимонова</td>\n",
+       "      <td>текущая</td>\n",
+       "      <td>NaN</td>\n",
+       "      <td>оригинал</td>\n",
+       "      <td>2021-11-15 00:00:00</td>\n",
+       "    </tr>\n",
+       "  </tbody>\n",
+       "</table>\n",
+       "</div>"
+      ],
+      "text/plain": [
+       "     client_id     sum      status        sale new/current  Unnamed: 5  \\\n",
+       "725      285.0  4328.7    ОПЛАЧЕНО    Васильев     текущая         NaN   \n",
+       "726      360.0  3096.2    ОПЛАЧЕНО    Васильев       новая         NaN   \n",
+       "727      360.0  3096.2  ПРОСРОЧЕНО    Васильев       новая         NaN   \n",
+       "728      373.0  4403.7    ОПЛАЧЕНО    Михайлов       новая         NaN   \n",
+       "729      286.0  3978.7    ОПЛАЧЕНО  Филимонова     текущая         NaN   \n",
+       "\n",
+       "     document       receiving_date  \n",
+       "725  оригинал  2021-11-15 00:00:00  \n",
+       "726       НЕТ                  NaN  \n",
+       "727       НЕТ                  NaN  \n",
+       "728  оригинал  2021-11-08 00:00:00  \n",
+       "729  оригинал  2021-11-15 00:00:00  "
+      ]
+     },
+     "execution_count": 7,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "df.tail()"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 8,
+   "id": "f928147b-96a6-4401-9b8b-ee5aa627d92a",
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "<class 'pandas.core.frame.DataFrame'>\n",
+      "RangeIndex: 730 entries, 0 to 729\n",
+      "Data columns (total 8 columns):\n",
+      " #   Column          Non-Null Count  Dtype  \n",
+      "---  ------          --------------  -----  \n",
+      " 0   client_id       724 non-null    float64\n",
+      " 1   sum             724 non-null    float64\n",
+      " 2   status          730 non-null    object \n",
+      " 3   sale            724 non-null    object \n",
+      " 4   new/current     724 non-null    object \n",
+      " 5   Unnamed: 5      0 non-null      float64\n",
+      " 6   document        709 non-null    object \n",
+      " 7   receiving_date  607 non-null    object \n",
+      "dtypes: float64(3), object(5)\n",
+      "memory usage: 45.8+ KB\n"
+     ]
+    }
+   ],
+   "source": [
+    "df.info()"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 9,
+   "id": "c2d2e019-7ddf-4ca3-97ed-0311898ad8bb",
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "array(['Май 2021', 'ВНУТРЕННИЙ', 'ОПЛАЧЕНО', 'ПРОСРОЧЕНО', 'Июнь 2021',\n",
+       "       'Июль 2021', 'Август 2021', 'В РАБОТЕ', 'Сентябрь 2021',\n",
+       "       'Октябрь 2021', 'НА ПОДПИСАНИИ'], dtype=object)"
+      ]
+     },
+     "execution_count": 9,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "df['status'].unique()"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 10,
+   "id": "0d566140-d8f7-4e9a-b743-4cd847ebcc47",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# Преобразования столбца receiving_date в формат datetime \n",
+    "df['receiving_date'] = pd.to_datetime(df['receiving_date'], errors='coerce')\n",
+    "\n",
+    "# Создаем новые столбцы для месяца и года из столбца receiving_date\n",
+    "df['receiving_month'] = df['receiving_date'].dt.month\n",
+    "df['receiving_year'] = df['receiving_date'].dt.year"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 11,
+   "id": "a7c47051-5762-4845-82d1-e4cf958041c0",
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/html": [
+       "<div>\n",
+       "<style scoped>\n",
+       "    .dataframe tbody tr th:only-of-type {\n",
+       "        vertical-align: middle;\n",
+       "    }\n",
+       "\n",
+       "    .dataframe tbody tr th {\n",
+       "        vertical-align: top;\n",
+       "    }\n",
+       "\n",
+       "    .dataframe thead th {\n",
+       "        text-align: right;\n",
+       "    }\n",
+       "</style>\n",
+       "<table border=\"1\" class=\"dataframe\">\n",
+       "  <thead>\n",
+       "    <tr style=\"text-align: right;\">\n",
+       "      <th></th>\n",
+       "      <th>client_id</th>\n",
+       "      <th>sum</th>\n",
+       "      <th>status</th>\n",
+       "      <th>sale</th>\n",
+       "      <th>new/current</th>\n",
+       "      <th>Unnamed: 5</th>\n",
+       "      <th>document</th>\n",
+       "      <th>receiving_date</th>\n",
+       "      <th>receiving_month</th>\n",
+       "      <th>receiving_year</th>\n",
+       "    </tr>\n",
+       "  </thead>\n",
+       "  <tbody>\n",
+       "    <tr>\n",
+       "      <th>0</th>\n",
+       "      <td>NaN</td>\n",
+       "      <td>NaN</td>\n",
+       "      <td>Май 2021</td>\n",
+       "      <td>NaN</td>\n",
+       "      <td>NaN</td>\n",
+       "      <td>NaN</td>\n",
+       "      <td>NaN</td>\n",
+       "      <td>NaT</td>\n",
+       "      <td>NaN</td>\n",
+       "      <td>NaN</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <th>1</th>\n",
+       "      <td>6.0</td>\n",
+       "      <td>11693.7</td>\n",
+       "      <td>ВНУТРЕННИЙ</td>\n",
+       "      <td>-</td>\n",
+       "      <td>-</td>\n",
+       "      <td>NaN</td>\n",
+       "      <td>-</td>\n",
+       "      <td>NaT</td>\n",
+       "      <td>NaN</td>\n",
+       "      <td>NaN</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <th>2</th>\n",
+       "      <td>14.0</td>\n",
+       "      <td>5452.7</td>\n",
+       "      <td>ОПЛАЧЕНО</td>\n",
+       "      <td>Петрова</td>\n",
+       "      <td>новая</td>\n",
+       "      <td>NaN</td>\n",
+       "      <td>оригинал</td>\n",
+       "      <td>2021-07-26</td>\n",
+       "      <td>7.0</td>\n",
+       "      <td>2021.0</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <th>3</th>\n",
+       "      <td>15.0</td>\n",
+       "      <td>13991.7</td>\n",
+       "      <td>ОПЛАЧЕНО</td>\n",
+       "      <td>Иванов</td>\n",
+       "      <td>текущая</td>\n",
+       "      <td>NaN</td>\n",
+       "      <td>оригинал</td>\n",
+       "      <td>2021-06-08</td>\n",
+       "      <td>6.0</td>\n",
+       "      <td>2021.0</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <th>4</th>\n",
+       "      <td>16.0</td>\n",
+       "      <td>719.7</td>\n",
+       "      <td>ОПЛАЧЕНО</td>\n",
+       "      <td>Иванов</td>\n",
+       "      <td>текущая</td>\n",
+       "      <td>NaN</td>\n",
+       "      <td>оригинал</td>\n",
+       "      <td>2021-06-08</td>\n",
+       "      <td>6.0</td>\n",
+       "      <td>2021.0</td>\n",
+       "    </tr>\n",
+       "  </tbody>\n",
+       "</table>\n",
+       "</div>"
+      ],
+      "text/plain": [
+       "   client_id      sum      status     sale new/current  Unnamed: 5  document  \\\n",
+       "0        NaN      NaN    Май 2021      NaN         NaN         NaN       NaN   \n",
+       "1        6.0  11693.7  ВНУТРЕННИЙ        -           -         NaN         -   \n",
+       "2       14.0   5452.7    ОПЛАЧЕНО  Петрова       новая         NaN  оригинал   \n",
+       "3       15.0  13991.7    ОПЛАЧЕНО   Иванов     текущая         NaN  оригинал   \n",
+       "4       16.0    719.7    ОПЛАЧЕНО   Иванов     текущая         NaN  оригинал   \n",
+       "\n",
+       "  receiving_date  receiving_month  receiving_year  \n",
+       "0            NaT              NaN             NaN  \n",
+       "1            NaT              NaN             NaN  \n",
+       "2     2021-07-26              7.0          2021.0  \n",
+       "3     2021-06-08              6.0          2021.0  \n",
+       "4     2021-06-08              6.0          2021.0  "
+      ]
+     },
+     "execution_count": 11,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "df.head()"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "d0233ec2-2ae3-4fdb-830b-20ec00d5002f",
+   "metadata": {},
+   "source": [
+    "---\n",
+    "**1. Общую выручка за июль 2021 по тем сделкам, приход денежных\n",
+    "средств которых не просрочен.**"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 12,
+   "id": "1b062ecf-9905-453d-b860-e0bb943887ac",
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "Общая выручка за июль 2021 (без просроченных платежей): 757830.7399999996\n"
+     ]
+    }
+   ],
+   "source": [
+    "# Фильтрация данных для июля 2021 с непросроченными платежами\n",
+    "july_2021_revenue = df[(df['receiving_date'].dt.month == 7) &\n",
+    "                         (df['receiving_date'].dt.year == 2021) &\n",
+    "                         (df['status'] == 'ОПЛАЧЕНО')]['sum'].sum()\n",
+    "\n",
+    "print('Общая выручка за июль 2021 (без просроченных платежей):', july_2021_revenue)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "f3c10915-99a9-4964-b87c-fa02065ff432",
+   "metadata": {},
+   "source": [
+    "---\n",
+    "**2. Изменение выручки компании.**"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 13,
+   "id": "5605a264-2bd1-4c9b-a6da-a34509089b19",
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "image/png": "iVBORw0KGgoAAAANSUhEUgAAA+gAAAI4CAYAAAD56sN/AAAAOXRFWHRTb2Z0d2FyZQBNYXRwbG90bGliIHZlcnNpb24zLjUuMSwgaHR0cHM6Ly9tYXRwbG90bGliLm9yZy/YYfK9AAAACXBIWXMAAAsTAAALEwEAmpwYAAB2hUlEQVR4nO3deZyO9eL/8dcYMxMzJgmlwkmltCiSFlvrr1VKJUR1WpRKIbLv+56So1JfJcshTmk9bVKK6mg9DnUIiZKQjGWGmfv3x3VMptAwy3XfM6/n4+Ghuea+r3lfM5/G/b4/1/W54iKRSARJkiRJkhSqEmEHkCRJkiRJFnRJkiRJkqKCBV2SJEmSpChgQZckSZIkKQpY0CVJkiRJigIWdEmSJEmSooAFXZJULJx44ols3Lgx++PMzExuvPFGWrduHWIqSZKk31jQJUnF0vjx41myZEnYMSRJkrJZ0CVJxc5nn33GM888w3333Ze97T//+Q9NmjThsssu44YbbmDlypUAXHjhhdSuXZv09HQAduzYwZlnnpk9856RkcHgwYO59tprufrqq+natStpaWnZz/3qq6+yv8aeH7/zzjvccMMNXHPNNTRv3pzPPvsMgEcffZT+/ftnP2fPj/d8/qeffspJJ53ERx99tN/97en777+nRo0aNGnShCuuuIIrr7yS//73vwB07dqVp5566g/Pad26Na+//joAJ598MmPGjKFp06ZcdtllvPHGG0QiES699FI++OCD7Of06NGDZ555Zp/H/9FHH3HVVVcB8NRTT3HppZeyYcOGHGc5vPzyy5x44ol8//33f8i0+3Eff/wxl156KfPmzWPLli106tSJq666isaNGzN8+HB27dqVq59h165dadCgAU2aNKFJkybUqlUr+5gnTJjADTfcQOPGjbn44ot58803D/rntOdxA/Tu3ZsLL7zwD8cnSSq+LOiSpGIlLS2Nzp0707VrV6pUqZK9fe3atXTv3p3XX3+dY489lpdeein7c1WqVOH9998H4I033qBs2bLZn3viiSeIj49n9uzZzJkzh4oVKzJy5Mj9Zli5ciVjxozhiSee4IUXXmDAgAG0a9eObdu25eoYdu7cyYABAzj00EMPeH+HHHIIL774Iq+++iqXXXYZEydOzNXXhOCygFKlSjF79mwefvhhunfvzqZNm2jRogUzZswAgu/vO++8w7XXXkt8fDxZWVn73N+yZcuYOXMmc+bM4fDDD8/evnnzZsaPH09CQsI+n7tjxw769+/PuHHjaNSoEQMHDqRs2bK89NJLzJo1i6+//pqnn346+/H7+xkC3Hrrrbz44ou8+OKLnHrqqQCsWbOGDz/8kMmTJ/PSSy/RoUMHHnnkkVx/v37/c9rTv/71L955551c70uSVDyUDDuAJEmFacCAAZx88slcf/312bOkABdffDGbNm3i0ksv5fvvv+fFF1/M/twVV1zBa6+9xsUXX8wLL7zANddcw8cffwzAu+++y5YtW/jwww+BoJTtWTY7derEIYccAsBPP/0EwAcffMBPP/3Erbfemv24uLg4vvvuOwBeffVVFi1aBMDPP//MpZdemuMYnnzySc4///zs2dz97e+kk07a5/fi559/pkyZMtkfT5o0iTlz5hAfH8+FF17IPffc84fntGrVCoCTTjqJ6tWr88knn9C0aVMee+wxNm7cyOuvv875559Pamoq1apV45133uG0005j69atZGRkZO9n5cqVXHfddUyYMIGkpKQcX2P48OHcdtttDBo0aJ/Zr7zySm6//XZOOOEEAN577z2mTZtGXFwciYmJNG/enGeeeYY2bdoA+/8Z7svRRx/N8OHDeemll1i1ahVffPEFW7duzf78gf6cdsvIyGDgwIF06tTpgAq/JKnocwZdklRsvPbaayxYsCDHqcm7paWlceihh/LPf/6Tdu3a5ShOZ599Nl988QWrVq1iy5Yt2aUQICsri+7du2fPvs6cOZOxY8dmf37kyJHZn6tYsWL2c84999zs7S+++CIzZszI3u8VV1yRvb158+Y5cq5atYp//vOftG3bNkeG/e1vTzt27Mg+lX/mzJk0aNAg+3O7Z5Gfe+453n///RxnEewWHx+f4+vGx8eTmprKZZddxpw5c5g1axYtWrQAoFu3bnz++edcddVVtG3bNke5/ctf/sL48ePp27dvjpn+f/3rX6xevZrrr7/+D197T9OmTcueKd+dJS4uLke23ae4w/5/hvuyePFibrzxRtLS0qhXrx533HFHjs8f6M9ptyeeeIKLLrqI44477k8zSJKKFwu6JKnYGDlyJMOGDfvD6c0AN910E6+99hoAZcqU4ddff83+XIkSJahfvz5dunShSZMmOZ5Xv359pkyZQkZGBllZWfTq1YvRo0fvN8e5557LBx98wPLlywGYN28eV199NTt27PjTYxg+fDg9evQgMTHxoPa3+xT3119/naeeeorevXvv9TGlSpXa6/NfeOEFICivK1as4KyzzgKC79+zzz5LJBKhZs2aQFDCn3nmGV599VWee+45DjvssBz7qlevHqeeeipPPPFEjuPr16/fn34fKlasyN1335392Pr16/Pcc88RiUTIyMhgxowZnHfeedmP39/PcF8++eQTTj31VP76179St25d3n77bTIzM3P13L39nADWr1/Pm2++yV133ZWr/UiSihdPcZckFRstWrTg3HPP3evnBgwYQJ8+fZgwYQIJCQkMGDAgx+evuOIKnn/+eSZMmMDChQuzt99zzz0MGzaMa6+9lszMTGrUqEHXrl33m+P444+nf//+dOzYkUgkQsmSJfnb3/5GcnLynx5DgwYNqFu37kHvb/cMeiQSIT09nZtuuin7c5MmTeLFF19k+/btnHbaaVxzzTW8/PLLOZ7/6aefMmPGDLKyshgzZkz29dUnnXQShx566B9mkv9M+/btue6667Jn3Zs2bcqxxx6bq+def/31PPPMM7z55pv07NmTgQMH0rhxY3bu3EmDBg24++67czx+Xz/Dfbnqqqt44403uPzyy8nKyuKCCy5g8+bN2YsA7s/efk4QXF//2GOP/aG4S5IEEBeJRCJhh5AkSdHvxBNPZMGCBZQrV+4Pn/vuu++yV3wvVapUCOkkSYp9zqBLkqQ8GTt2LDNmzKBfv36Wc0mS8sAZdEmSJEmSooCLxEmSJEmSFAUs6JIkSZIkRYFieQ36559/TlJSUtgxDkp6enrMZlfhcqwoLxw/OliOHeWWY0V54fhRbkXrWElPT+eMM874w/ZiWdCTkpKoUaNG2DEOypIlS2I2uwqXY0V54fjRwXLsKLccK8oLx49yK1rHypIlS/a63VPcJUmSJEmKAhZ0SZIkSZKigAVdkiRJkqQoYEGXJEmSJCkKWNAlSZIkSYoCFnRJkiRJkqKABV2SJEmSpChgQZckSZIkKQpY0CVJkiRJigIWdEmSJEmSooAFXZIkSZKkKGBBlyRJkiQpCljQJUmSJEmKAiXDDiBJkqT8tXPnTrp27cqaNWsoUaIEAwYMYNy4cfz8888ArFmzhtNPP50xY8YwY8YMpk+fTsmSJWnbti0XXHDBXvf50ksv8dxzz/H3v/89e9vGjRtp3rw5L730EklJSezYsYPOnTuzYcMGkpOTGTZsGOXKlSuUY5akosCCLkmSVMTMmzePXbt2MX36dD744AMefvhhHn30UQA2b97MzTffTLdu3Vi/fj2TJ09m1qxZpKen07JlS+rVq0diYmKO/S1ZsoTnn3+eSCSSve39999n1KhR2aUfYNq0aVSvXp127drxyiuvMH78eHr27Fk4By1JRYCnuEuSJBUxxx57LJmZmWRlZZGWlkbJkr/NyTz66KO0atWKihUr8uWXX1KrVi0SExMpU6YMVapUYenSpTn2tWnTJkaOHEn37t1zbC9RogT/93//R9myZbO3LVq0iAYNGgDQsGFDFixYUHAHKUlFkDPokiRJRUzp0qVZs2YNl19+OZs2bWLChAkAbNiwgQULFtCtWzcA0tLSKFOmTPbzkpOTSUtLy/44MzOTHj160L17d5KSknJ8jXr16v3h6+65v+TkZLZs2ZLvxyZJRZkFXZKkGLG364rLli1Lz549+fXXX8nMzGT48OFUqVKFSZMm8corrwDQqFEj7rvvvhz7Wrx4MXfffTd/+ctfAGjRogVXXHHFXq9H3rZtGw8++CCbN2+mVKlSjBgxwuuKo9ykSZOoX78+Dz74ID/88AO33HILL730Eq+//jpXXXUV8fHxAKSkpLB169bs523dujVHYV+8eDGrVq2ib9++pKens2zZMgYNGkSPHj32+nX33N/WrVtJTU0twKOUpKLHgi5JUozY23XFycnJNG7cmCuuuIKFCxfy7bffEhcXx5w5c5g5cyZxcXG0bNmSiy++mJNOOil7X//5z3/461//ym233Za9bV/XI8+YMYNTTjmF++67j9mzZ3tdcQxITU0lISEBgEMPPZRdu3aRmZnJggULaNu2bfbjatasycMPP0x6ejoZGRksX76c6tWr5/j87jd6vv/+ezp27LjPcg5Qu3Zt5s2bR82aNXnvvfc488wzycqCn36C9HRISoKKFaGEF1lK0l5Z0CVJihF7u674008/5cQTT+TWW2/l6KOPpkePHiQkJDBx4sTsWdJdu3b94fTkf//736xYsYK3336bqlWr0r179xzXIycmJmZfj3zrrbeSmZkJwNq1aylfvnyhH7sOzK233kr37t1p2bIlO3fupEOHDpQuXZoVK1ZQuXLl7MdVqFCB1q1b07JlSyKR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vF07y7kkSdKejjwSOnaEGTPgX/8KO43yQ4EU9I8++ojPPvuMadOmMXnyZH788UeGDBlC+/btmTp1KpFIhLfffpv169czefJkpk+fzlNPPcXo0aPJyMhg2rRpVK9enalTp3LNNdcwfvx4APr06cOoUaOYNm0aX3zxBYsXL2bx4sV8/PHHzJw5k9GjR9OvX7+COCRJhWx3OR89OijnY8daziVJkn6vUycoXz64BW0kEnYa5VWBFPT58+dTvXp17r33Xu6++27OP/98Fi9eTN26dQFo2LAhH374IV9++SW1atUiMTGRMmXKUKVKFZYuXcqiRYto0KBB9mMXLFhAWloaGRkZVKlShbi4OOrXr8+CBQtYtGgR9evXJy4ujqOOOorMzMzsGXdJsSkSgQcfDMr5/fdbziVJkvYlNTU41f2dd+DNN8NOo7wqWRA73bRpE2vXrmXChAl8//33tG3blkgkQtz/XmEnJyezZcsW0tLSKFOmTPbzkpOTSUtLy7F9z8empKTkeOzq1atJSkqibNmyObZv2bKFcuXK7TNfeno6S5YsyeejLhw7duyI2ewqXLE6ViIRGD68Is88czitWm3krrvWsXRp2KmKn1gdPwqfY0e55VhRXjh+cmrUKI6jj65G+/ZZzJy5ghKuNJYt1sZKgRT0smXLUq1aNRITE6lWrRpJSUn8uMcN+rZu3UpqaiopKSls3bo1x/YyZcrk2L6/x6amppKQkLDXfexPUlISNWrUyK/DLVRLliyJ2ewqXLE4VnbPnD/zDDzwAIwZU464uH2/2aaCE4vjR9HBsaPccqwoLxw/fzRsGLRqBV9+WYMWLcJOEz2idazs602DAnlv5cwzz+T9998nEomwbt06tm/fzrnnnstHH30EwHvvvUedOnWoWbMmixYtIj09nS1btrB8+XKqV69O7dq1mTdvXvZjzzzzTFJSUkhISOC7774jEokwf/586tSpQ+3atZk/fz5ZWVmsXbuWrKys/c6eS4pOkUiwyMmYMbvLuae1S5Ik5VaLFnD66cGK7hkZYafRwSqQGfQLLriATz75hOuvv55IJELv3r055phj6NWrF6NHj6ZatWpceumlxMfH07p1a1q2bEkkEqFDhw4kJSXRokULunTpQosWLUhISGDUqFEA9OvXj06dOpGZmUn9+vU5/fTTAahTpw433ngjWVlZ9O7duyAO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bCZOnMiqVat4+eWXmTp1Kl9++WXY0RRFpk+fTmpqKrfddhslSpTg7bffBqBECX8V6M9t376d0qVLc9ddd3H55ZdToUIFnnzyScaNG8cnn3wSdjxFse3bt3PIIYdwzz33cO6551K3bl1WrVrFvHnz2LJlS9jxFEUyMzMpX748bdu25cILL6Rx48YcccQRvP/++2zcuDHseIoBK1asYPXq1cydO5e33nor7DiKUhkZGcTFxXHfffdx4okncthhh/HGG2+EHQuwoBcZJUqUoEePHpxyyil069aNNm3aUKFCBX744YewoymKtGzZkl69egFwzTXXsHHjRr7++uuQUylWlCpVinLlyjF48GBuu+02fvnlFy655BKA7LMxpL0pVaoUSUlJdO7cGYDSpUtz5JFHsmzZMtavXx9yOkWT+Ph4tmzZQseOHQE47rjjOOuss1i2bBk//vhjyOkUCxISEmjdujW1atVi4cKFvPPOO2FHUhRKTEykTJkyfPPNNwCUL1+eww47DIAvv/yS1atXh5atZGhfWXmy+5qJSpUqER8fz+23387PP//MxIkTuemmmzjqqKMAWLx4MZdeeqmL8hRje46VjIwM2rZtS5kyZShdujRHHXUU3333HSeeeCJZWVnOpOsP9hw/JUuWpH379nz//feMHDmSIUOGcMQRR/Dll1+yfPnysKMqyuweO0ceeSQJCQl06NCBcePGcffdd7NlyxbGjh3LrFmzWLlyJdWqVQs7rkI2fvx4KlWqxLXXXsvw4cPp3Lkz3bp1Y8iQIdSoUYMjjzySxYsXc/LJJ4cdVVFo/PjxHHXUUVxzzTVcf/31ZGZmkp6eTlpaGh9//DEZGRlcdtllYcdUFNjzd03//v2zt//666+cdNJJfPTRRzz99NMMHDgwtIy+Go9RPXr04Mgjj+Tqq69m27Zt/PWvf6Vt27bUqVOH5s2bM3bsWObNm0fTpk0BF3AqzvYcKyVKlOCWW27hl19+ISUlhXr16tGrVy8WLVpkOdde7Tl+tm7dyk033USFChUoX748DzzwAM8//zxz586lVatWYUdVlNk9dpo0acK2bdu4//776dGjBxMmTODaa69l8eLFvPzyy5x00klhR1UUWL58OXPmzOGFF14AoH///mRkZHDbbbfxzDPP8MEHH3DOOeeEG1JRa/ny5bzwwgvMmTOHpKQkSpcuzWGH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\n",
+      "text/plain": [
+       "<Figure size 1008x576 with 1 Axes>"
+      ]
+     },
+     "metadata": {},
+     "output_type": "display_data"
+    }
+   ],
+   "source": [
+    "sns.set_style('whitegrid')\n",
+    "\n",
+    "monthly_revenue = df.resample('M', on='receiving_date').sum()\n",
+    "\n",
+    "plt.figure(figsize=(14, 8))\n",
+    "ax = sns.lineplot(x=monthly_revenue.index, \n",
+    "                  y=monthly_revenue['sum'], \n",
+    "                  marker='o', \n",
+    "                  color='b')\n",
+    "ax.set(xlabel='Дата', \n",
+    "       ylabel='Выручка', \n",
+    "       title='Изменение выручки компании')\n",
+    "\n",
+    "plt.xticks(rotation=45)\n",
+    "\n",
+    "for i, row in monthly_revenue.iterrows():\n",
+    "    ax.text(i, row['sum'], \n",
+    "            f'{int(row[\"sum\"]):,}', \n",
+    "            ha='right', \n",
+    "            va='bottom')\n",
+    "\n",
+    "plt.tight_layout()\n",
+    "plt.show()"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "b6a8e134-1fc4-4073-92b1-80a8075b1214",
+   "metadata": {},
+   "source": [
+    "Из графика видно, что выручка растет с июля по сентябрь, далее выходит на один уровень. В ноябре данные представлены до середины месяца.\n",
+    "Можно спрогнозировать выручу за ноябрь. "
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 14,
+   "id": "d46fd727-59c3-4932-9d0a-9cd9c3a5cbdf",
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "Прогнозируемая выручка за ноябрь: 870200.8171428571\n"
+     ]
+    }
+   ],
+   "source": [
+    "from sklearn.linear_model import LinearRegression\n",
+    "from datetime import datetime\n",
+    "\n",
+    "df['receiving_date'] = pd.to_datetime(df['receiving_date'], errors='coerce')\n",
+    "\n",
+    "df['receiving_month'] = df['receiving_date'].dt.month\n",
+    "df['receiving_year'] = df['receiving_date'].dt.year\n",
+    "\n",
+    "monthly_revenue = df.groupby(pd.Grouper(key='receiving_date', freq='M')) \\\n",
+    "                    .sum()\n",
+    "\n",
+    "# Модель линейной регрессии\n",
+    "X = np.array(range(len(monthly_revenue))).reshape(-1, 1)\n",
+    "y = monthly_revenue['sum'].values.reshape(-1, 1)\n",
+    "model = LinearRegression()\n",
+    "model.fit(X, y)\n",
+    "\n",
+    "# Прогнозирование выручки на ноябрь\n",
+    "november_index = len(monthly_revenue)\n",
+    "november_revenue_predicted = model.predict([[november_index]])[0][0]\n",
+    "\n",
+    "# Добавление прогнозируемой выручки для ноября\n",
+    "last_date = monthly_revenue.index[-1]\n",
+    "next_month = last_date + pd.DateOffset(months=1)\n",
+    "monthly_revenue.loc[next_month] = november_revenue_predicted\n",
+    "\n",
+    "print('Прогнозируемая выручка за ноябрь:', november_revenue_predicted)\n"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "32199412-c07e-4b58-b52d-980cb9564dfd",
+   "metadata": {},
+   "source": [
+    "---\n",
+    "**3. Кто из менеджеров привлек для компании больше всего денежных средств в сентябре 2021?**"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 15,
+   "id": "cb0ba53f-7de4-424f-9875-d66ee4e55395",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "september_df = df.query(\"receiving_date.dt.month == 9 and receiving_date.dt.year == 2021\") \\\n",
+    "                   .groupby('sale')['sum'] \\\n",
+    "                   .sum()"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 16,
+   "id": "5c8ff8a3-5e24-411d-b8c7-840a3afd78d1",
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "sale\n",
+       "Андреев       124714.55\n",
+       "Васильев       55667.50\n",
+       "Иванов        165314.80\n",
+       "Кузнецова      60230.20\n",
+       "Петрова       219240.12\n",
+       "Смирнов       155245.90\n",
+       "Соколов        44234.60\n",
+       "Филимонова     45763.30\n",
+       "Name: sum, dtype: float64"
+      ]
+     },
+     "execution_count": 16,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "september_df"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 17,
+   "id": "05d9da1c-31b5-4bf1-8d40-13d75a473d08",
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "В сентябре 2021 привлек больше всего денежных средств менеджер Петрова.\n"
+     ]
+    }
+   ],
+   "source": [
+    "print(f\"В сентябре 2021 привлек больше всего денежных средств менеджер {september_df.idxmax()}.\")"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "594c9c1b-8c56-4ba9-ae05-d00b68fcaf83",
+   "metadata": {},
+   "source": [
+    "---\n",
+    "**4. Какой тип сделок (новая/текущая) был преобладающим в октябре 2021?**"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 18,
+   "id": "d9f5b553-da24-4b21-951a-f8060bfc1df3",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "predominant_deal_type = df.query(\"receiving_date.dt.month == 10 and receiving_date.dt.year == 2021\") \\\n",
+    "                          .groupby('new/current') \\\n",
+    "                          .agg({'document':'count'}) "
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 19,
+   "id": "a4f8fe3e-fb97-4d35-8cae-4cdc25845b89",
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/html": [
+       "<div>\n",
+       "<style scoped>\n",
+       "    .dataframe tbody tr th:only-of-type {\n",
+       "        vertical-align: middle;\n",
+       "    }\n",
+       "\n",
+       "    .dataframe tbody tr th {\n",
+       "        vertical-align: top;\n",
+       "    }\n",
+       "\n",
+       "    .dataframe thead th {\n",
+       "        text-align: right;\n",
+       "    }\n",
+       "</style>\n",
+       "<table border=\"1\" class=\"dataframe\">\n",
+       "  <thead>\n",
+       "    <tr style=\"text-align: right;\">\n",
+       "      <th></th>\n",
+       "      <th>document</th>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <th>new/current</th>\n",
+       "      <th></th>\n",
+       "    </tr>\n",
+       "  </thead>\n",
+       "  <tbody>\n",
+       "    <tr>\n",
+       "      <th>новая</th>\n",
+       "      <td>16</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <th>текущая</th>\n",
+       "      <td>101</td>\n",
+       "    </tr>\n",
+       "  </tbody>\n",
+       "</table>\n",
+       "</div>"
+      ],
+      "text/plain": [
+       "             document\n",
+       "new/current          \n",
+       "новая              16\n",
+       "текущая           101"
+      ]
+     },
+     "execution_count": 19,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "predominant_deal_type"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 20,
+   "id": "3f320bb0-8da3-400b-8319-b43b0c4b9503",
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "Преобладающий тип сделок в октябре 2021: текущая\n"
+     ]
+    }
+   ],
+   "source": [
+    "print(\"Преобладающий тип сделок в октябре 2021:\", predominant_deal_type.idxmax()[0])"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "9cb3149a-9cb4-4924-a05c-0c724aa951f6",
+   "metadata": {},
+   "source": [
+    "---\n",
+    "**5. Сколько оригиналов договора по майским сделкам было получено в июне 2021?**"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 21,
+   "id": "a45ff66d-af93-43a5-b7a5-093f492d6897",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "june_df = df.query('receiving_date.dt.month == 6 and document==\"оригинал\"')"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 22,
+   "id": "20ac7c0e-b82b-42d2-bebb-0841f38ec5a7",
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/html": [
+       "<div>\n",
+       "<style scoped>\n",
+       "    .dataframe tbody tr th:only-of-type {\n",
+       "        vertical-align: middle;\n",
+       "    }\n",
+       "\n",
+       "    .dataframe tbody tr th {\n",
+       "        vertical-align: top;\n",
+       "    }\n",
+       "\n",
+       "    .dataframe thead th {\n",
+       "        text-align: right;\n",
+       "    }\n",
+       "</style>\n",
+       "<table border=\"1\" class=\"dataframe\">\n",
+       "  <thead>\n",
+       "    <tr style=\"text-align: right;\">\n",
+       "      <th></th>\n",
+       "      <th>client_id</th>\n",
+       "      <th>sum</th>\n",
+       "      <th>status</th>\n",
+       "      <th>sale</th>\n",
+       "      <th>new/current</th>\n",
+       "      <th>Unnamed: 5</th>\n",
+       "      <th>document</th>\n",
+       "      <th>receiving_date</th>\n",
+       "      <th>receiving_month</th>\n",
+       "      <th>receiving_year</th>\n",
+       "    </tr>\n",
+       "  </thead>\n",
+       "  <tbody>\n",
+       "    <tr>\n",
+       "      <th>3</th>\n",
+       "      <td>15.0</td>\n",
+       "      <td>13991.7</td>\n",
+       "      <td>ОПЛАЧЕНО</td>\n",
+       "      <td>Иванов</td>\n",
+       "      <td>текущая</td>\n",
+       "      <td>NaN</td>\n",
+       "      <td>оригинал</td>\n",
+       "      <td>2021-06-08</td>\n",
+       "      <td>6.0</td>\n",
+       "      <td>2021.0</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <th>4</th>\n",
+       "      <td>16.0</td>\n",
+       "      <td>719.7</td>\n",
+       "      <td>ОПЛАЧЕНО</td>\n",
+       "      <td>Иванов</td>\n",
+       "      <td>текущая</td>\n",
+       "      <td>NaN</td>\n",
+       "      <td>оригинал</td>\n",
+       "      <td>2021-06-08</td>\n",
+       "      <td>6.0</td>\n",
+       "      <td>2021.0</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <th>8</th>\n",
+       "      <td>23.0</td>\n",
+       "      <td>8511.7</td>\n",
+       "      <td>ОПЛАЧЕНО</td>\n",
+       "      <td>Андреев</td>\n",
+       "      <td>текущая</td>\n",
+       "      <td>NaN</td>\n",
+       "      <td>оригинал</td>\n",
+       "      <td>2021-06-08</td>\n",
+       "      <td>6.0</td>\n",
+       "      <td>2021.0</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <th>9</th>\n",
+       "      <td>24.0</td>\n",
+       "      <td>16347.7</td>\n",
+       "      <td>ОПЛАЧЕНО</td>\n",
+       "      <td>Андреев</td>\n",
+       "      <td>новая</td>\n",
+       "      <td>NaN</td>\n",
+       "      <td>оригинал</td>\n",
+       "      <td>2021-06-23</td>\n",
+       "      <td>6.0</td>\n",
+       "      <td>2021.0</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <th>10</th>\n",
+       "      <td>28.0</td>\n",
+       "      <td>10537.7</td>\n",
+       "      <td>ОПЛАЧЕНО</td>\n",
+       "      <td>Андреев</td>\n",
+       "      <td>текущая</td>\n",
+       "      <td>NaN</td>\n",
+       "      <td>оригинал</td>\n",
+       "      <td>2021-06-16</td>\n",
+       "      <td>6.0</td>\n",
+       "      <td>2021.0</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <th>...</th>\n",
+       "      <td>...</td>\n",
+       "      <td>...</td>\n",
+       "      <td>...</td>\n",
+       "      <td>...</td>\n",
+       "      <td>...</td>\n",
+       "      <td>...</td>\n",
+       "      <td>...</td>\n",
+       "      <td>...</td>\n",
+       "      <td>...</td>\n",
+       "      <td>...</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <th>120</th>\n",
+       "      <td>266.0</td>\n",
+       "      <td>3363.7</td>\n",
+       "      <td>ОПЛАЧЕНО</td>\n",
+       "      <td>Петрова</td>\n",
+       "      <td>текущая</td>\n",
+       "      <td>NaN</td>\n",
+       "      <td>оригинал</td>\n",
+       "      <td>2021-06-23</td>\n",
+       "      <td>6.0</td>\n",
+       "      <td>2021.0</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <th>121</th>\n",
+       "      <td>270.0</td>\n",
+       "      <td>5288.7</td>\n",
+       "      <td>ОПЛАЧЕНО</td>\n",
+       "      <td>Васильев</td>\n",
+       "      <td>текущая</td>\n",
+       "      <td>NaN</td>\n",
+       "      <td>оригинал</td>\n",
+       "      <td>2021-06-07</td>\n",
+       "      <td>6.0</td>\n",
+       "      <td>2021.0</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <th>122</th>\n",
+       "      <td>273.0</td>\n",
+       "      <td>10133.7</td>\n",
+       "      <td>ОПЛАЧЕНО</td>\n",
+       "      <td>Петрова</td>\n",
+       "      <td>текущая</td>\n",
+       "      <td>NaN</td>\n",
+       "      <td>оригинал</td>\n",
+       "      <td>2021-06-01</td>\n",
+       "      <td>6.0</td>\n",
+       "      <td>2021.0</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <th>123</th>\n",
+       "      <td>274.0</td>\n",
+       "      <td>26033.7</td>\n",
+       "      <td>ОПЛАЧЕНО</td>\n",
+       "      <td>Петрова</td>\n",
+       "      <td>текущая</td>\n",
+       "      <td>NaN</td>\n",
+       "      <td>оригинал</td>\n",
+       "      <td>2021-06-22</td>\n",
+       "      <td>6.0</td>\n",
+       "      <td>2021.0</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <th>128</th>\n",
+       "      <td>287.0</td>\n",
+       "      <td>6368.7</td>\n",
+       "      <td>ОПЛАЧЕНО</td>\n",
+       "      <td>Филимонова</td>\n",
+       "      <td>текущая</td>\n",
+       "      <td>NaN</td>\n",
+       "      <td>оригинал</td>\n",
+       "      <td>2021-06-29</td>\n",
+       "      <td>6.0</td>\n",
+       "      <td>2021.0</td>\n",
+       "    </tr>\n",
+       "  </tbody>\n",
+       "</table>\n",
+       "<p>76 rows × 10 columns</p>\n",
+       "</div>"
+      ],
+      "text/plain": [
+       "     client_id      sum    status        sale new/current  Unnamed: 5  \\\n",
+       "3         15.0  13991.7  ОПЛАЧЕНО      Иванов     текущая         NaN   \n",
+       "4         16.0    719.7  ОПЛАЧЕНО      Иванов     текущая         NaN   \n",
+       "8         23.0   8511.7  ОПЛАЧЕНО     Андреев     текущая         NaN   \n",
+       "9         24.0  16347.7  ОПЛАЧЕНО     Андреев       новая         NaN   \n",
+       "10        28.0  10537.7  ОПЛАЧЕНО     Андреев     текущая         NaN   \n",
+       "..         ...      ...       ...         ...         ...         ...   \n",
+       "120      266.0   3363.7  ОПЛАЧЕНО     Петрова     текущая         NaN   \n",
+       "121      270.0   5288.7  ОПЛАЧЕНО    Васильев     текущая         NaN   \n",
+       "122      273.0  10133.7  ОПЛАЧЕНО     Петрова     текущая         NaN   \n",
+       "123      274.0  26033.7  ОПЛАЧЕНО     Петрова     текущая         NaN   \n",
+       "128      287.0   6368.7  ОПЛАЧЕНО  Филимонова     текущая         NaN   \n",
+       "\n",
+       "     document receiving_date  receiving_month  receiving_year  \n",
+       "3    оригинал     2021-06-08              6.0          2021.0  \n",
+       "4    оригинал     2021-06-08              6.0          2021.0  \n",
+       "8    оригинал     2021-06-08              6.0          2021.0  \n",
+       "9    оригинал     2021-06-23              6.0          2021.0  \n",
+       "10   оригинал     2021-06-16              6.0          2021.0  \n",
+       "..        ...            ...              ...             ...  \n",
+       "120  оригинал     2021-06-23              6.0          2021.0  \n",
+       "121  оригинал     2021-06-07              6.0          2021.0  \n",
+       "122  оригинал     2021-06-01              6.0          2021.0  \n",
+       "123  оригинал     2021-06-22              6.0          2021.0  \n",
+       "128  оригинал     2021-06-29              6.0          2021.0  \n",
+       "\n",
+       "[76 rows x 10 columns]"
+      ]
+     },
+     "execution_count": 22,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "june_df"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 23,
+   "id": "f66d749a-3d25-4dcf-87bd-266b5052a054",
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "Количество оригиналов договора по майским сделкам в июне 2021: 76\n"
+     ]
+    }
+   ],
+   "source": [
+    "print(\"Количество оригиналов договора по майским сделкам в июне 2021:\", june_df['client_id'].shape[0])"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "dad68375-b2a8-4cea-980d-d2a3ad08d3f3",
+   "metadata": {},
+   "source": [
+    "---\n",
+    "**Задание.**\n",
+    "\n",
+    "За каждую заключенную сделку менеджер получает бонус, который рассчитывается следующим образом.\n",
+    "\n",
+    "За новые сделки менеджер получает 7 % от суммы, при условии, что статус оплаты «ОПЛАЧЕНО», а также имеется оригинал подписанного договора с клиентом (в рассматриваемом месяце).\n",
+    "\n",
+    "За текущие сделки менеджер получает 5 % от суммы, если она больше 10 тыс., и 3 % от суммы, если меньше. При этом статус оплаты может быть любым, кроме «ПРОСРОЧЕНО», а также необходимо наличие оригинала подписанного договора с клиентом (в рассматриваемом месяце). \n",
+    "\n",
+    "Бонусы по сделкам, оригиналы для которых приходят позже рассматриваемого месяца, считаются остатком на следующий период, который выплачивается по мере прихода оригиналов. Вычислите остаток каждого из менеджеров на 01.07.2021."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 24,
+   "id": "5a2ade5a-f4d4-447a-929f-bb84c99ccfbe",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "max_bonus = 0.07\n",
+    "mid_bonus = 0.05\n",
+    "low_bonus = 0.03\n",
+    "\n",
+    "df['sales_bonus'] = 0\n",
+    "\n",
+    "# Рассчет бонусов для новых сделок\n",
+    "new_deals_mask = (df['new/current'] == 'новая') & (df['status'] == 'ОПЛАЧЕНО') & df['receiving_date'].notnull()\n",
+    "df.loc[new_deals_mask, 'sales_bonus'] = round(df.loc[new_deals_mask, 'sum'] * max_bonus, 2)\n",
+    "\n",
+    "# Рассчет бонусов для текущих сделок\n",
+    "current_deals_mask = (df['new/current'] == 'текущая') & (df['status'] != 'ПРОСРОЧЕНО') & df['receiving_date'].notnull()\n",
+    "df.loc[current_deals_mask & (df['sum'] < 10000), 'sales_bonus'] = round(df.loc[current_deals_mask & (df['sum'] < 10000), 'sum'] * low_bonus, 2)\n",
+    "df.loc[current_deals_mask & (df['sum'] >= 10000), 'sales_bonus'] = round(df.loc[current_deals_mask & (df['sum'] >= 10000), 'sum'] * mid_bonus, 2)\n",
+    "\n",
+    "# Рассчет остатков бонусов на 01.07.2021\n",
+    "remaining_bonus = df[df['receiving_date'] > '2021-07-01'].groupby('sale')['sales_bonus'].sum()"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 26,
+   "id": "ae816447-5652-42c9-822a-4b3c97015ec2",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "remaining_bonus = pd.DataFrame(remaining_bonus)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 27,
+   "id": "1f68c2e9-7390-4318-848f-007edd3af205",
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/html": [
+       "<div>\n",
+       "<style scoped>\n",
+       "    .dataframe tbody tr th:only-of-type {\n",
+       "        vertical-align: middle;\n",
+       "    }\n",
+       "\n",
+       "    .dataframe tbody tr th {\n",
+       "        vertical-align: top;\n",
+       "    }\n",
+       "\n",
+       "    .dataframe thead th {\n",
+       "        text-align: right;\n",
+       "    }\n",
+       "</style>\n",
+       "<table border=\"1\" class=\"dataframe\">\n",
+       "  <thead>\n",
+       "    <tr style=\"text-align: right;\">\n",
+       "      <th></th>\n",
+       "      <th>sales_bonus</th>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <th>sale</th>\n",
+       "      <th></th>\n",
+       "    </tr>\n",
+       "  </thead>\n",
+       "  <tbody>\n",
+       "    <tr>\n",
+       "      <th>Андреев</th>\n",
+       "      <td>27164.26</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <th>Васильев</th>\n",
+       "      <td>6934.62</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <th>Иванов</th>\n",
+       "      <td>22041.59</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <th>Кузнецова</th>\n",
+       "      <td>16108.76</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <th>Михайлов</th>\n",
+       "      <td>607.07</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <th>Петрова</th>\n",
+       "      <td>28282.38</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <th>Селиванов</th>\n",
+       "      <td>7102.47</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <th>Смирнов</th>\n",
+       "      <td>31089.57</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <th>Соколов</th>\n",
+       "      <td>3730.70</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <th>Филимонова</th>\n",
+       "      <td>11043.56</td>\n",
+       "    </tr>\n",
+       "  </tbody>\n",
+       "</table>\n",
+       "</div>"
+      ],
+      "text/plain": [
+       "            sales_bonus\n",
+       "sale                   \n",
+       "Андреев        27164.26\n",
+       "Васильев        6934.62\n",
+       "Иванов         22041.59\n",
+       "Кузнецова      16108.76\n",
+       "Михайлов         607.07\n",
+       "Петрова        28282.38\n",
+       "Селиванов       7102.47\n",
+       "Смирнов        31089.57\n",
+       "Соколов         3730.70\n",
+       "Филимонова     11043.56"
+      ]
+     },
+     "execution_count": 27,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "remaining_bonus"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "id": "ee10f19f-2ce4-49d2-8cc7-3b584d5ea3a4",
+   "metadata": {},
+   "outputs": [],
+   "source": []
+  }
+ ],
+ "metadata": {
+  "kernelspec": {
+   "display_name": "Python 3 (ipykernel)",
+   "language": "python",
+   "name": "python3"
+  },
+  "language_info": {
+   "codemirror_mode": {
+    "name": "ipython",
+    "version": 3
+   },
+   "file_extension": ".py",
+   "mimetype": "text/x-python",
+   "name": "python",
+   "nbconvert_exporter": "python",
+   "pygments_lexer": "ipython3",
+   "version": "3.9.12"
+  }
+ },
+ "nbformat": 4,
+ "nbformat_minor": 5
+}
